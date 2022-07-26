@@ -289,13 +289,13 @@ function buffer.watch(self)
           self.queue[i] = true
         end
         self.debounce_timer:stop()
-        self.debounce_timer:start(self.opts.debounce, 0, vim.schedule_wrap(function()
+        self.debounce_timer:start(self.opts.debounce, 0, function() -- no need to schedule, since time:start() already does that
           self:safe_buf_call(function()
             for linenr, _ in pairs(self.queue) do
               self:index_line(linenr, vim.api.nvim_buf_get_lines(self.bufnr, linenr - 1, linenr, true)[1])
             end
           end)
-        end))
+        end)
       else
         self:index_range(first_line, new_last_line)
       end
