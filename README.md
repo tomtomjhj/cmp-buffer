@@ -231,3 +231,14 @@ end
 ```
 
 Of course, this snippet can be combined with any other recipes for `get_bufnrs`.
+
+# TODO
+Deboucing bug
+```
+Error executing vim.schedule lua callback: lua/cmp_buffer/buffer.lua:347: attempt to get length of local 'remaining' (a nil value)
+stack traceback:
+        lua/cmp_buffer/buffer.lua:347: in function 'index_line'
+        lua/cmp_buffer/buffer.lua:297: in function 'callback'
+        lua/cmp_buffer/buffer.lua:123: in function 'safe_buf_call'
+        lua/cmp_buffer/buffer.lua:295: in function ''
+```

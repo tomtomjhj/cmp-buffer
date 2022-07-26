@@ -226,6 +226,8 @@ function buffer.watch(self)
         -- all of them will be filled in the next loop, but in reverse order
         -- (which is why I am concerned about preallocation). Why is there no
         -- built-in function to do this in Lua???
+        -- TODO: why is reader able to observe this state?
+        -- off by one??
         for i = old_lines_count + 1, new_lines_count do
           self.lines_words[i] = false
         end
